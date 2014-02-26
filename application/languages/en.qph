@@ -1,0 +1,15 @@
+<!DOCTYPE QPH>
+<QPH language="en_US">
+<phrase>
+    <source>m1</source>
+    <target>message1</target>
+</phrase>
+<phrase>
+    <source>m2</source>
+    <target>message2</target>
+</phrase>
+<phrase>
+    <source>m3</source>
+    <target>message3</target>
+</phrase>
+</QPH>

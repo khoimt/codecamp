@@ -1,0 +1,8 @@
+<h3>Hello World!</h3>
+<?php if ($this->msg !== ''): ?>
+<h1><?php echo $this->msg ?></h1>
+<hr />
+<?php endif; ?>
+<form method="POST" action="<?php echo $this->BaseUrl('default/mail/send-mail') ?>">
+    <input type="submit" value="Send mail" />
+</form>
