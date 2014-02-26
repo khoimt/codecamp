@@ -21,15 +21,9 @@ class Default_DefaultController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $this->view->placeholder('foo')->append('Hello World!');
-//        $this->_forward('foo');
-        $this->_helper->redirector->gotoSimple('foo', 'default', 'default', array());
-        echo '123';
-        die;
-//        $arr = array();
-//        $arr->append(100);
-//        print_r($arr);
-//        die;
+       $this->getHelper('ViewRenderer')->setNorender(1);
+       echo 'Hello World!';
+       die;
     }
 
     public function fooAction()
