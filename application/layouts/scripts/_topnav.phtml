@@ -6,16 +6,6 @@ $sz_Control = Zend_Controller_Front::getInstance()
 <h2 class="noDisplay">Main Navigation</h2>
 <div class="main-nav">
     <ul class="clearfix">
-        <li class="<?php if ($sz_Control == 'index') echo 'current' ?>">
-            <a href="<?php echo $this->url(array(
-				'controller' => 'index',
-				'action' => 'index',
-					), 'default', true
-			);
-			?>" 
-               title="Homepage">Store</a>
-        </li>
-
         <?php if ($this->authInfo()->isLoggedIn()): ?>
             <li class="<?php if ($sz_Control == 'customer') echo 'current' ?>">
                 <a href="<?php echo $this->url(array(

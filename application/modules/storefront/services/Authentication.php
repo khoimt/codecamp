@@ -114,11 +114,11 @@ class Storefront_Service_Authentication
 		if (null === $this->_authAdapter)
 		{
 			$authAdapter = new Zend_Auth_Adapter_DbTable(
-							Zend_Db_Table_Abstract::getDefaultAdapter(),
-							'user',
-							'email',
-							'passwd',
-							'SHA1(CONCAT(?,salt))'
+                Zend_Db_Table_Abstract::getDefaultAdapter(),
+                'user',
+                'email',
+                'passwd',
+                '?'
 			);
 			$this->setAuthAdapter($authAdapter);
 			$this->_authAdapter->setIdentity($values['email']);
