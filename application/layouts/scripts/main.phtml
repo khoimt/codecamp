@@ -1,0 +1,64 @@
+<?php echo $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <?php echo $this->headMeta(); ?>
+        <?php echo $this->headTitle(); ?>
+        <?php echo $this->headStyle(); ?>
+        <?php echo $this->headLink(); ?>
+        <?php echo $this->headScript(); ?>
+    </head>
+    <body>
+        <h1 class="noDisplay">
+            <?php echo $this->placeholder('Zend_View_Helper_HeadTitle'); ?>
+        </h1>
+        <div id="headwrap" class="clearfix">
+            <div class="right">
+                <?php echo $this->render('_topnav.phtml') ?>
+            </div>
+            <div id="logo" class="left logo-container">
+                <div class="logo-content">PHP CODE CAMP</div>
+            </div>
+        </div>
+        <div id="contentWrap" class="clearfix">
+            <div class="left categorylist">
+                <?php if (!$this->authInfo()->isLoggedIn()): ?>
+                    Chào <strong>Khách</strong>,
+                    (<a href="<?php echo $this->url(array('action' => 'login', 'controller' => 'customer')); ?>">
+                        login
+                    </a>)
+                <?php else: ?>
+                    Chào <strong><?php echo $this->authInfo('firstname') ?></strong>,
+                    (<a href="<?php echo $this->url(array('action' => 'logout', 'controller' => 'customer')); ?>">
+                        logout
+                    </a>)
+                    <hr />
+
+                    (<a href="<?php
+                    echo $this->url(
+                            array(
+                                'action' => 'login-http',
+                                'controller' => 'customer',
+                                'logout' => 1,
+                            )
+                    );
+                    ?>">
+                        logoutHTTP
+                    </a>)
+                <?php endif ?>
+            </div>
+            <div class="content left">
+                <?php echo $this->layout()->content ?>
+            </div>
+        </div>
+        <div id="footer" class="clearfix">
+            <div class="left">
+                <span class="rss">
+                    <a href="/rss" title="products feed">RSS 2.0</a>
+                </span>
+            </div>
+            <div class="right">
+                &#169; 2008 Keith Pope
+            </div>
+        </div>
+    </body>
+</html>
