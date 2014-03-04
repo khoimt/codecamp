@@ -28,21 +28,8 @@
                     </a>)
                 <?php else: ?>
                     Chào <strong><?php echo $this->authInfo('firstname') ?></strong>,
-                    (<a href="<?php echo $this->url(array('action' => 'logout', 'controller' => 'customer')); ?>">
+                    (<a href="<?php echo $this->url(array('action' => 'logout', 'controller' => 'user')); ?>">
                         logout
-                    </a>)
-                    <hr />
-
-                    (<a href="<?php
-                    echo $this->url(
-                            array(
-                                'action' => 'login-http',
-                                'controller' => 'customer',
-                                'logout' => 1,
-                            )
-                    );
-                    ?>">
-                        logoutHTTP
                     </a>)
                 <?php endif ?>
             </div>

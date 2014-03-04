@@ -1,34 +1,45 @@
 <?php
-$sz_Control = Zend_Controller_Front::getInstance()
-		->getRequest()
-		->getControllerName();
+$ob_request = Zend_Controller_Front::getInstance()
+		->getRequest();
+$sz_Control = $ob_request->getControllerName();
+$sz_Action = $ob_request->getActionName();
+
 ?>
 <h2 class="noDisplay">Main Navigation</h2>
 <div class="main-nav">
     <ul class="clearfix">
         <?php if ($this->authInfo()->isLoggedIn()): ?>
-            <li class="<?php if ($sz_Control == 'customer') echo 'current' ?>">
+            <li class="<?php if ($sz_Control == 'problem' && $sz_Action == 'index') echo 'current' ?>">
                 <a href="<?php echo $this->url(array(
-                       'controller' => 'customer',
+                       'controller' => 'problem',
                        'action' => 'index',
                            ), 'default', true
                    );
                 ?>"
-                   title="Profile">Profile</a>
+                   title="Problems">Problems</a>
             </li>
-            <li class="">
+            <li class="<?php if ($sz_Control == 'problem' && $sz_Action == 'submit') echo 'current' ?>">
                 <a href="<?php echo $this->url(array(
-                       'controller' => 'customer',
-                       'action' => 'logout',
+                       'controller' => 'problem',
+                       'action' => 'submit',
                            ), 'default', true
                    );
                 ?>"
-                   title="Logout">Logout</a>
+                   title="Submit">Submit</a>
+            </li>
+            <li class="<?php if ($sz_Control == 'prolem' && $sz_Action == 'submit') echo 'current' ?>">
+                <a href="<?php echo $this->url(array(
+                       'controller' => 'problem',
+                       'action' => 'submit',
+                           ), 'default', true
+                   );
+                ?>"
+                   title="Score">Score</a>
             </li>
         <?php else: ?>
             <li class="">
                 <a href="<?php echo $this->url(array(
-                       'controller' => 'customer',
+                       'controller' => 'user',
                        'action' => 'login',
                            ), 'default', true
                    );

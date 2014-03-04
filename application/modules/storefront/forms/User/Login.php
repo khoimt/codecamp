@@ -18,7 +18,7 @@ class Storefront_Form_User_Login extends SF_Form_Abstract
 		$this->addElement('password', 'passwd', array(
 			'filters' => array('StringTrim'),
 			'validators' => array(
-				array('StringLength', true, array(6, 128))
+				array('StringLength', true, array(3, 128))
 			),
 			'required' => true,
 			'label' => 'Password',

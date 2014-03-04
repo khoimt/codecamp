@@ -8,9 +8,13 @@ class Storefront_IndexController extends Zend_Controller_Action
     
     public function indexAction()
     {
-        $o_Catalog = new Storefront_Model_Catalog();
-        $arr = $o_Catalog->getCategoriesByParentId(0);
-        print_r($arr->toArray());
+        $this->_helper->redirector('index', 'problem');
+        die;
+//        echo $this->getRequest()->getModuleName();
+//        echo '<br />';
+//        echo $this->getRequest()->getControllerName();
+//        echo '<br />';
+//        echo $this->getRequest()->getActionName();
     }
 	
 	public function localeAction() 

@@ -13,7 +13,6 @@ class Storefront_UserController extends Zend_Controller_Action {
      * @var Storefront_Service_Authentication 
      */
     protected $_authService = null;
-    protected $_authServiceHttp = null;
 
     public function init() {
         // get the default model
@@ -21,15 +20,6 @@ class Storefront_UserController extends Zend_Controller_Action {
 
         $this->_authService = Storefront_Service_Authentication::getInstance(
                         $this->_model
-        );
-        $this->_authServiceHttp = new Storefront_Service_HttpAuthentication(
-            $this->_model, array(
-                'request' => $this->getRequest(),
-                'response' => $this->getResponse(),
-                'resolver' => array(
-                    'path' => APPLICATION_PATH . '/data/pass.txt',
-                ),
-            )
         );
 
         // add forms
@@ -70,25 +60,6 @@ class Storefront_UserController extends Zend_Controller_Action {
         
     }
 
-    public function loginHttpAction() {
-        if ($this->getRequest()->getParam('logout', 0) == 1 && $this->_authServiceHttp->getIdentity() !== false) {
-            return $this->_authServiceHttp->logout();
-        }
-        $this->_authServiceHttp = new Storefront_Service_HttpAuthentication($this->_model);
-        $b_result = $this->_authServiceHttp->authenticate(
-            array(
-                'request' => $this->getRequest(),
-                'response' => $this->getResponse(),
-                'resolver' => array(
-                    'path' => APPLICATION_PATH . '/data/pass.txt',
-                )
-            )
-        );
-        if (true === $b_result) {
-            $this->_helper->redirector('index');
-        }
-    }
-
     public function logoutHttpAction() {
         
     }
@@ -111,7 +82,7 @@ class Storefront_UserController extends Zend_Controller_Action {
             return $this->render('login');
         }
 
-        return $this->_helper->redirector('index');
+        return $this->_helper->redirector('index', 'problem');
     }
 
     public function logoutAction() {
@@ -140,7 +111,7 @@ class Storefront_UserController extends Zend_Controller_Action {
         $this->_forms['register'] = $this->_model->getForm
                 ('userRegister');
         $this->_forms['register']->setAction($urlHelper->url(array(
-                    'controller' => 'customer',
+                    'controller' => 'user',
                     'action' => 'complete-registration'
                         ), 'default'
         ));
@@ -153,7 +124,7 @@ class Storefront_UserController extends Zend_Controller_Action {
         $this->_forms['userEdit'] = $this->_model->getForm
                 ('userEdit');
         $this->_forms['userEdit']->setAction($urlHelper->url(array(
-                    'controller' => 'customer',
+                    'controller' => 'user',
                     'action' => 'save'
                         ), 'default'
         ));
@@ -166,7 +137,7 @@ class Storefront_UserController extends Zend_Controller_Action {
 
         $this->_forms['login'] = $this->_model->getForm('userLogin');
         $this->_forms['login']->setAction($urlHelper->url(array(
-                    'controller' => 'customer',
+                    'controller' => 'user',
                     'action' => 'authenticate',
                         ), 'default'
         ));

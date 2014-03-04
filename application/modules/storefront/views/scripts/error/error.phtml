@@ -3,7 +3,14 @@
 <p><?php echo $this->escape($this->message); ?></p>
 <hr />
 <p>
+    <?php 
+        $front = Zend_Controller_Front::getInstance();
+        $request = $front->getRequest();
+    ?>
     <pre>
+        Module: <?php echo $request->getModuleName() . "\n" ?>
+        Controller: <?php echo $request->getControllerName() . "\n" ?>
+        Action: <?php echo $request->getActionName() . "\n" ?>
         <?php echo $this->escape($this->traceAsTring); ?>
     </pre>
 </p>

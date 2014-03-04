@@ -16,5 +16,6 @@ class Default_IndexController extends Zend_Controller_Action
     {
         print_r($this->getRequest()->getParams());
         echo 'Hello Index';
+        echo 123;
     }
 }

@@ -1,31 +1,8 @@
 <?php
 
-function print_backtrace () {
-    $arr = debug_backtrace();
-    foreach ($arr as &$v) {
-        unset($v['args']);
-        unset($v['object']);
-    }
-    print_r(array_reverse($arr));
-}
-
-//function sayHello () {
-//    echo "Hello aaa";
-//    return '1';
-//}
-
 // Define path to application directory
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
-
-defined('DATA_DIR')
-    || define('DATA_DIR', realpath(dirname(__FILE__) . '/../data'));
-
-defined('DEMO_DIR')
-    || define('DEMO_DIR', realpath(dirname(__FILE__) . '/../demos'));
-
-defined('CACHE_DIR')
-    || define('CACHE_DIR', realpath(DATA_DIR . '/caches'));
 
 // Define application environment
 defined('APPLICATION_ENV')

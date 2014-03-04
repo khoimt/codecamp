@@ -23,6 +23,7 @@ class Default_DefaultController extends Zend_Controller_Action
     {
        $this->getHelper('ViewRenderer')->setNorender(1);
        echo 'Hello World!';
+       echo 123;
        die;
     }
 

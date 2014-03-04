@@ -139,8 +139,10 @@ a:hover {
 }
 
 .categorylist {
-    width: 30%;
+    width: 200px;
     margin-right: 20px;
+    min-height:600px;
+    border-right : 1px solid #DDD;
 }
 
 #bigfoot {
