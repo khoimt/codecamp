@@ -13,7 +13,7 @@ class Storefront_ProblemController extends Zend_Controller_Action {
      * @var Storefront_Service_Authentication 
      */
     protected $_authService = null;
-    
+
     public function init() {
         // get the default model
         $this->_model = new Storefront_Model_User();
@@ -34,6 +34,24 @@ class Storefront_ProblemController extends Zend_Controller_Action {
     }
 
     public function submitAction() {
+        $this->view->problemSubmit = $this->getSubmitForm();
+    }
+    
+    public function getSubmitForm() {
+        $name = "problemSubmit";
+        $urlHelper = $this->_helper->getHelper('url');
+        if (array_key_exists($name, $this->_forms)) {
+            return $this->_forms[$name];
+        }
         
+        $this->_forms[$name] = $this->_model->getForm($name);
+        $this->_forms[$name]->setAction($urlHelper->url(array(
+                    'controller' => 'problem',
+                    'action' => 'save'
+                        ), 'default'
+        ));
+        $this->_forms[$name]->setMethod('post');
+        $this->_forms[$name]->setEnctype(Zend_Form::ENCTYPE_MULTIPART);
+        return $this->_forms[$name];
     }
 }

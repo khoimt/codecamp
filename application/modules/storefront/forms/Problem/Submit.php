@@ -5,29 +5,16 @@ class Storefront_Form_Problem_Submit extends SF_Form_Abstract
 
 	public function init()
 	{
-		$this->addElement('text', 'email', array(
-			'filters' => array('StringTrim', 'StringToLower'),
-			'validators' => array(
-				array('StringLength', true, array(3, 128)),
-				array('EmailAddress'),
-			),
-			'required' => true,
-			'label' => 'Email',
-		));
-
-		$this->addElement('password', 'passwd', array(
-			'filters' => array('StringTrim'),
-			'validators' => array(
-				array('StringLength', true, array(3, 128))
-			),
-			'required' => true,
-			'label' => 'Password',
-		));
-
-		$this->addElement('submit', 'login', array(
+		$this->addElement('file', 'submits', array(
 			'required' => false,
 			'ignore' => true,
-			'label' => 'Login',
+			'label' => 'Files',
+		));
+		
+		$this->addElement('submit', 'submit', array(
+			'required' => false,
+			'ignore' => true,
+			'label' => 'Submit',
 		));
 		$this->setDecorators(array(
 			'FormElements',
