@@ -13,8 +13,7 @@ class Storefront_ProblemController extends Zend_Controller_Action {
      * @var Storefront_Service_Authentication 
      */
     protected $_authService = null;
-    protected $_authServiceHttp = null;
-
+    
     public function init() {
         // get the default model
         $this->_model = new Storefront_Model_User();
